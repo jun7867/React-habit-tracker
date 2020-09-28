@@ -1,17 +1,24 @@
 import React, { Component } from "react";
 
 class Input extends Component {
+  inputRef = React.createRef();
+
+  onSubmit = (event) => {
+    event.preventDefault();
+    const name = this.inputRef.current.value;
+    name && this.props.onAdd(name);
+  };
   render() {
     return (
-      <div className="input">
+      <form className="input" onSubmit={this.onSubmit}>
         <input
+          ref={this.inputRef}
           type="text"
-          name="input"
           className="input-box"
           placeholder="Habit"
         ></input>
         <button className="input-btn">Add</button>
-      </div>
+      </form>
     );
   }
 }
