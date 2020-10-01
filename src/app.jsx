@@ -13,17 +13,30 @@ class App extends Component {
   };
 
   handleIncrement = (habit) => {
-    const habits = [...this.state.habits];
-    const index = habits.indexOf(habit);
-    habits[index].count++;
+    // const habits = [...this.state.habits];
+    // const index = habits.indexOf(habit);
+    // habits[index].count++;
+
+    // Pure Component 사용으로 인한 object 변경하기 위해 refactoring.
+    const habits = this.state.habits.map((item) => {
+      //id가 habit에 있는 id랑 동일할때 habit을 다 복사하고 count는 +1 해줌
+      if (item.id === habit.id) {
+        return { ...habit, count: habit.count + 1 };
+      }
+      return item;
+    });
     this.setState({ habits });
   };
 
   handleDecrement = (habit) => {
-    const habits = [...this.state.habits];
-    const index = habits.indexOf(habit);
-    const count = habits[index].count - 1;
-    habits[index].count = count < 0 ? 0 : count;
+    const habits = this.state.habits.map((item) => {
+      //id가 habit에 있는 id랑 동일할때 habit을 다 복사하고 count는 +1 해줌
+      if (item.id === habit.id) {
+        const count = habit.count - 1;
+        return { ...habit, count: count < 0 ? 0 : count };
+      }
+      return item;
+    });
     this.setState({ habits });
   };
   handleDelete = (habit) => {
@@ -37,11 +50,16 @@ class App extends Component {
     ];
     this.setState({ habits });
   };
+
   handleReset = () => {
     const habits = this.state.habits.map((habit) => {
-      habit.count = 0;
+      // 0이 아닐때만 update
+      if (habit.count !== 0) {
+        return { ...habit, count: 0 };
+      }
       return habit;
     });
+
     this.setState({ habits });
   };
   render() {

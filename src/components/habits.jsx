@@ -6,7 +6,7 @@ import Reset from "./reset";
 class Habits extends Component {
   render() {
     return (
-      <>
+      <div>
         <Input onAdd={this.props.onAdd} />
         <ul>
           {this.props.habits.map((habit) => (
@@ -20,7 +20,7 @@ class Habits extends Component {
           ))}
         </ul>
         <Reset onReset={this.props.onReset} />
-      </>
+      </div>
     );
   }
 }
