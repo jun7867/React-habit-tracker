@@ -21,7 +21,7 @@ class App extends Component {
     const habits = this.state.habits.map((item) => {
       //id가 habit에 있는 id랑 동일할때 habit을 다 복사하고 count는 +1 해줌
       if (item.id === habit.id) {
-        return { ...habit, count: habit.count + 1 };
+        return { ...habit, count: item.count + 1 };
       }
       return item;
     });
@@ -32,7 +32,7 @@ class App extends Component {
     const habits = this.state.habits.map((item) => {
       //id가 habit에 있는 id랑 동일할때 habit을 다 복사하고 count는 +1 해줌
       if (item.id === habit.id) {
-        const count = habit.count - 1;
+        const count = item.count - 1;
         return { ...habit, count: count < 0 ? 0 : count };
       }
       return item;
