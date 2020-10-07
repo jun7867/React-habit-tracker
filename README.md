@@ -3,7 +3,7 @@
 ## 사용기술
 
 - HTML, CSS, JS, React
-- class ,function, hook, PureComponent, netlify build 사용
+- Reactg class ,function, hook, PureComponent, netlify build 사용
 
 ### 링크
 [사이트 접속하기](https://5f79c0d468402784e3ceac45--jun-habit-tracker.netlify.app/)
